@@ -1,5 +1,8 @@
+package java;
+import java.util.Scanner;
 
 public class Stack <T>{
+
 
     private class ListStack {
         T value;

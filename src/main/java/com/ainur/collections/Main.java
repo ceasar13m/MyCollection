@@ -1,12 +1,13 @@
-import java.util.ArrayList;
+package java;
 
+//
 public class Main {
-    public static void main(String[] args) {
 
-        Stack<ArrayList<Integer>> stringStack = new Stack<ArrayList<Integer>>();
-        stringStack.push(new ArrayList<Integer>());
-        stringStack.push(new ArrayList<Integer>());
-        stringStack.push(new ArrayList<Integer>());
+    public static void main(String[] args) {
+        Stack<String> stringStack = new Stack<String>();
+        stringStack.push("aaa");
+        stringStack.push("bbb");
+        stringStack.push("ccc");
 
         System.out.println(stringStack.size());
         System.out.println(stringStack.pop());
