@@ -1,0 +1,56 @@
+Нужно создать библиотеку для работы с данными.
+
+
+
+---------- Реализация List -------------
+
+Создай интерфейс List<T> с методами:
+int size();
+boolean isEmpty();
+boolean contains(T t);
+void add(T t);
+void remove(T t);
+
+Нужно реализовать
+1. Динамический массив - ArrayList<T> implements List<T>
+2. Связный список - LinkedList<T> implements List<T>
+
+
+
+
+
+---------- Реализация Map ---------------
+
+Создай интерфейс Map<K,V> с методами
+int size();
+boolean isEmpty();
+boolean containsKey(K key);
+boolean containsValue(V value);
+V get(K key);
+V put(K key, V value);
+V remove(K key);
+
+
+---------- Реализация Set -------------
+
+Создай интерфейс Set<T> с методами:
+int size();
+boolean isEmpty();
+boolean contains(T t);
+void add(T t);
+void remove(T t);
+
+
+Нужно реализовать 2 разных Set-а.
+1. HashSet<T> implements Set<T>
+2. TreeSet<T> implements Set<T> - на основе бинарного дерева поиска.
+
+
+
+
+----------- Тестирование --------------
+Скачай через мавен бибилиотеку JUnit (набери в гугле JUnit maven)
+Погугли как устанавливать бибиотеки через maven (это легко)
+Здесь будешь тестировать. Напиши, когда сделаешь.
+
+

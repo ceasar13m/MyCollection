@@ -1,6 +1,6 @@
-package java;
+package com.ainur.collections;
 
-//
+// Создай интерфейс Collections
 public class Main {
 
     public static void main(String[] args) {
