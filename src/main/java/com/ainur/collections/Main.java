@@ -1,6 +1,8 @@
 package java;
 
+//
 public class Main {
+
     public static void main(String[] args) {
         Stack<String> stringStack = new Stack<String>();
         stringStack.push("aaa");
