@@ -1,9 +1,11 @@
-package java;
+package com.ainur.collections;
 import java.util.Scanner;
+
 
 public class Stack <T>{
 
 
+    //  Переименуй на более правильное по смыслу слово, как Item, Node, Entry
     private class ListStack {
         T value;
         ListStack next;
