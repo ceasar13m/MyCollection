@@ -1,5 +1,4 @@
 package com.ainur.collections;
-import java.util.Scanner;
 
 
 public class Stack <T>{
