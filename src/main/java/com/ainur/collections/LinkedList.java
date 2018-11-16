@@ -15,14 +15,17 @@ public class LinkedList<T> implements List<T> {
     private Node temp;
     private int size = 0;
 
+    @Override
     public int size() {
         return size;
     }
 
+    @Override
     public boolean isEmpty() {
         return size == 0;
     }
 
+    @Override
     public boolean contains(T t) {
         Node node = root;
         while(true) {
@@ -37,6 +40,7 @@ public class LinkedList<T> implements List<T> {
         }
     }
 
+    @Override
     public void add(T t) {
         Node node = new Node(t);
         while(true) {
@@ -59,6 +63,7 @@ public class LinkedList<T> implements List<T> {
         }
     }
 
+    @Override
     public void remove(T t) {
         Node node = root;
         while(true) {
