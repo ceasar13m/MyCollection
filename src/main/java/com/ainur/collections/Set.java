@@ -1,6 +1,6 @@
 package com.ainur.collections;
 
-public interface Set<T extends Comparable> {
+public interface Set<T> {
     int size();
     boolean isEmpty();
     boolean contains(T t);
