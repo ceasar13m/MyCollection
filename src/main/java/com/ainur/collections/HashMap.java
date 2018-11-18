@@ -3,10 +3,10 @@ package com.ainur.collections;
 public class HashMap<K, V> implements Map<K, V> {
 
 
-    static class Entry{
-        final K key;
-        final V value;
-        Entry next;
+    static class Entry<K, V> implements Map.Entry<K, V>{
+        K key;
+        V value;
+        Entry<K, V> next;
 
         Entry(K key, V value) {
             this.key = key;
@@ -19,7 +19,7 @@ public class HashMap<K, V> implements Map<K, V> {
 
     private int getHashCode(K key) {
         int h;
-        return key == null ? 0 : ((h = key.hashCode()) ^ h >>> 16) / sizeOfHashMap;
+        return ((h = key.hashCode()) ^ h >>> 16) % sizeOfHashMap;
     }
 
     @Override
@@ -54,7 +54,10 @@ public class HashMap<K, V> implements Map<K, V> {
         for (int i = 0; i < hashTable.length; i++) {
             Entry entry = hashTable[i];
             while(true) {
-                if(entry.value.equals(value)) {
+                if(entry == null) {
+                    break;
+                }
+                else  if(entry.value.equals(value)) {
                     return true;
                 }
                 else if(entry.next == null) {
@@ -74,7 +77,7 @@ public class HashMap<K, V> implements Map<K, V> {
         Entry entry = hashTable[hashCode];
         while(true) {
             if(entry.key.equals(key)) {
-                return entry.value;
+                return (V) entry.value;
             }
             else if (entry.next == null) {
                 return null;
@@ -92,24 +95,23 @@ public class HashMap<K, V> implements Map<K, V> {
 
         if(hashTable[hashCode] == null) {
             hashTable[hashCode] = entry;
-            return entry.value;
+            size++;
+            return (V) entry.value;
         }
         else {
             Entry pointer = hashTable[hashCode];
-            Entry prePointer = hashTable[hashCode];
             while(true) {
-                if(pointer.key.equals(entry.key)) {
-                    entry.next = pointer.next;
-                    prePointer.next = entry;
-                    return entry.value;
+                if(pointer.key.equals(key)) {
+                    pointer.value = value;
+                    pointer.key = key;
+                    return (V) entry.value;
                 }
                 else if(pointer.next == null) {
                     pointer.next = entry;
                     size++;
-                    return entry.value;
+                    return (V) value;
                 }
                 else {
-                    prePointer = pointer;
                     pointer = pointer.next;
                 }
             }
@@ -119,24 +121,21 @@ public class HashMap<K, V> implements Map<K, V> {
     @Override
     public V remove(K key) {
         int hashCode = getHashCode(key);
-        Entry entry = hashTable[hashCode];
-        Entry temp  = null;
-        while (entry != null){
-            if(entry.key.equals(key)) {
-                if(temp == null) {
-                    V value = entry.value;
-                    hashTable[hashCode] = hashTable[hashCode].next;
-                    return value;
-                }
-                temp.next = entry.next;
-                entry.next = null;
-                return entry.value;
-            } else {
-                temp = entry;
-                entry = entry.next;
+        Entry pointer = hashTable[hashCode];
+        Entry prePointer = hashTable[hashCode];
+        while(true) {
+            if(pointer.key.equals(key)) {
+                prePointer.next = pointer.next;
+                size--;
+                return (V) pointer.value;
+            }
+            else if(pointer.next == null) {
+                return null;
+            }
+            else {
+                prePointer = pointer;
+                pointer = pointer.next;
             }
         }
-
-        return null;
     }
 }
